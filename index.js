@@ -349,7 +349,11 @@ function adapter(uri, opts){
           if(!response.clients || !Array.isArray(response.clients)) return;
           
           for(var i = 0; i < response.clients.length; i++){
-            clients[response.clients[i]] = true;
+            if (typeof response.clients[i]['userId'] !== 'undefined' && response.clients[i]['userId'] !== null) {
+              clients[response.clients[i]['socketId']] = response.clients[i]['userId'];
+            } else {
+              clients[response.clients[i]['socketId']] = true;
+            };
           }
 
           msg_count++;
