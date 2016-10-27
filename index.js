@@ -362,7 +362,7 @@ function adapter(uri, opts){
             subJson.unsubscribe(responseChn);
             subJson.removeListener(subEvent, onEvent);
 
-            if (fn) process.nextTick(fn.bind(null, null, Object.keys(clients)));
+            if (fn) process.nextTick(fn.bind(null, null, clients));
           }
         });
 
